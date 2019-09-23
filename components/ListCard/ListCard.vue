@@ -1,21 +1,25 @@
 <style lang="scss" src="./ListCard.scss"></style>
 
 <template>
-  <div v-if="!isFetching" class="wrapper-list-cards">
-    <ul>
-      <li v-for="card in filterCards()" :key="card.cardId">
+  <ul class="list-card">
+    <li v-for="card in filterCards()" :key="card.cardId">
+      <button
+        v-bind:disabled="!isSelectable"
+        v-on:click="addCardToDeck(card.cardId)"
+      >
         <img :src="card.img" alt />
         <p>{{ card.name }}</p>
-      </li>
-    </ul>
-  </div>
+      </button>
+    </li>
+  </ul>
 </template>
 
 <script>
-const mappingCards = (cards) => cards.filter(({ img }) => img);
-
 export default {
   props: {
+    cards: {
+      type: Array
+    },
     searchName: {
       type: String,
       default: ''
@@ -27,32 +31,16 @@ export default {
     selectedType: {
       type: String,
       default: ''
+    },
+    isSelectable: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
-    cards: [],
-    nbrResult: 24,
-    isFetching: true
+    nbrResult: 24
   }),
   methods: {
-    async fetchTracks() {
-      this.$axios.setHeader(
-        'x-rapidapi-host',
-        'omgvamp-hearthstone-v1.p.rapidapi.com'
-      );
-      this.$axios.setHeader(
-        'x-rapidapi-key',
-        'c7c6a2e2bemshdae4429f66a722bp1e27f3jsn2aa7a457e972'
-      );
-
-      const cards = await this.$axios.$get(
-        `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/Basic?locale=frFR`
-      );
-
-      this.cards = mappingCards(cards);
-      this.isFetching = false;
-      console.log('this', this.cards);
-    },
     filterCards() {
       return this.cards
         .slice(0, this.nbrResult)
@@ -76,10 +64,12 @@ export default {
 
         if (scrollToBottom) this.seeMore();
       };
+    },
+    addCardToDeck(idCard) {
+      this.$store.commit('user/addCard', idCard);
     }
   },
   mounted() {
-    this.fetchTracks();
     this.onScrollBottom();
   }
 };

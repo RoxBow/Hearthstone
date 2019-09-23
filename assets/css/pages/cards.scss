@@ -1,0 +1,91 @@
+@import '../variables';
+
+.container-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $secondColor;
+
+  h1 {
+    align-self: center;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  & > h2 {
+    margin-bottom: 3rem;
+  }
+
+  .wrapper-choice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 1rem 0;
+    width: 50%;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin: 0 2rem;
+    }
+  }
+
+  input[type='text'],
+  select {
+    padding: 0.6rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .btn-deck {
+    position: relative;
+    background-color: transparent;
+    width: 160px;
+    margin-left: 4rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    span {
+      position: absolute;
+      color: #fff;
+      font-size: 2rem;
+      top: 10%;
+      left: 30%;
+    }
+  }
+
+  .decklist {
+    position: fixed;
+    height: 100%;
+    width: 30%;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 2rem 1.2rem;
+    color: #fff;
+
+    h2 {
+      color: #fff;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  } // decklist
+}
