@@ -1,20 +1,27 @@
 # groover-tracks
 
-> 
+Projet buildé avec NuxtJS
 
-## Build Setup
+## Installation
 
-``` bash
-# install dependencies
-$ yarn install
+Installer les dépendances  
+`yarn install` 
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+Lancer le projet  
+`yarn dev`
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+Se rendre sur [localhost:3000](http://localhost:3000)
 
-# generate static project
-$ yarn generate
-```
+## Explication
+
+Le projet permet de créer son deck avec des cartes Hearthstone
+
+Il est constitué de deux pages :  
+``/ : Page d'accueil``  
+``/cards : Liste de carte``
+
+L'utilisateur entre son pseudo pour accéder à la page suivante, il a alors la possibilité de créer son deck en cliquant sur les cartes.  
+Il y a 3 types de filtre :  
+- recherche par nom
+- type de carte 
+- classe
