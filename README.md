@@ -1,4 +1,4 @@
-# groover-tracks
+# Hearthstone
 
 Projet buildé avec NuxtJS
 
